@@ -7,8 +7,8 @@ function Book (title, author, pages, read) {
 }
 
 Book.prototype.getInfo = function() {
-    const isRead = read === true ? "I have read " : "I have not read "
-    return (title + " by " + author + ", " + pages + " pages.")
+    const isRead = this.read === true ? "I have read " : "I have not read "
+    return (isRead + this.title + " by " + this.author + ", " + this.pages + " pages.")
 }
 
 const book1 = new Book('The Hobbit', 'J.R.R. Tolkien', '295', true)
