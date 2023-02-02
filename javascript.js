@@ -16,6 +16,12 @@ const book2 = new Book('LOTR', 'J.R.R. Tolkien', '3000', true)
 
 const myLibrary = [book1, book2]
 
+//initial render for books already in library
+myLibrary.forEach((item, index) => {
+    renderNewBook(index)
+})
+
+
 function addBook (event) {
     const newTitle = event.target.title.value;
     const newAuthor = event.target.author.value
@@ -28,7 +34,6 @@ function addBook (event) {
     console.log(myLibrary)
     renderNewBook(newestBookNum)
     event.preventDefault()
-
 }
 
 function renderNewBook(num) {
@@ -55,14 +60,11 @@ function renderNewBook(num) {
     document.querySelector(`#book${num}`).appendChild(btnRead)
 }
 
-myLibrary.forEach(item => {
-    renderNewBook(myLibrary.indexOf(item))
-})
 
 function toggleRead(event) {
     const bookId = event.target.id
     const id = bookId.slice(bookId.length-1)
-
+    
     myLibrary[id].read = !myLibrary[id].read
     
     document.querySelector(`#${bookId}`).innerText = myLibrary[id].read ? "Read" : "Not read"
