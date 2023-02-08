@@ -33,6 +33,7 @@ function addBook (event) {
     const newestBookNum = myLibrary.length - 1
     console.log(myLibrary)
     renderNewBook(newestBookNum)
+    document.forms.rest()
     event.preventDefault()
 }
 
