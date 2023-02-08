@@ -41,13 +41,19 @@ function renderNewBook(num) {
     const pAuthor = document.createElement("p")
     const pPages = document.createElement("p")
     const btnRead = document.createElement("button")
+    const btnDel = document.createElement("button")
     
     h1Title.innerText = myLibrary[num].title
     pAuthor.innerText = myLibrary[num].author
     pPages.innerText = myLibrary[num].pages + " pages"
+
     btnRead.onclick = toggleRead
     btnRead.setAttribute("id", `btn${num}`)
     btnRead.innerText = myLibrary[num].read ? "Read" : "Not read"
+
+    btnDel.onclick = removeBook
+    btnDel.setAttribute("id", `btnDel${num}`)
+    btnDel.innerText = "X"
 
     const bookDiv = document.createElement("div")
     document.querySelector(".bookshelf").appendChild(bookDiv)
@@ -58,6 +64,7 @@ function renderNewBook(num) {
     document.querySelector(`#book${num}`).appendChild(pAuthor)
     document.querySelector(`#book${num}`).appendChild(pPages)
     document.querySelector(`#book${num}`).appendChild(btnRead)
+    document.querySelector(`#book${num}`).appendChild(btnDel)
 }
 
 
@@ -68,4 +75,13 @@ function toggleRead(event) {
     myLibrary[id].read = !myLibrary[id].read
     
     document.querySelector(`#${bookId}`).innerText = myLibrary[id].read ? "Read" : "Not read"
+}
+
+function removeBook(event) {
+    const bookId = event.target.id
+    const id = bookId.slice(bookId.length-1)
+    myLibrary.splice(id, 1)
+
+    const removeBookElement = document.querySelector(`#book${id}`)
+    removeBookElement.remove()
 }
