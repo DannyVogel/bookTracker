@@ -51,6 +51,11 @@ input {
     border-radius: 10px;
 }
 
+input[type='text'] {
+    color: antiquewhite;
+    text-align: center;
+}
+
 input[type='checkbox'] {
     width: 20px;
     height: 20px;
